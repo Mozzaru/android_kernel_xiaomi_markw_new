@@ -180,7 +180,7 @@ static int verity_hash_init(struct dm_verity *v, struct ahash_request *req,
 		return r;
 	}
 
-	if (likely(v->salt_size && (v->version >= 1)))
+	if (likely(v->version >= 1))
 		r = verity_hash_update(v, req, v->salt, v->salt_size, res);
 
 	return r;
@@ -191,7 +191,7 @@ static int verity_hash_final(struct dm_verity *v, struct ahash_request *req,
 {
 	int r;
 
-	if (unlikely(v->salt_size && (!v->version))) {
+	if (unlikely(!v->version)) {
 		r = verity_hash_update(v, req, v->salt, v->salt_size, res);
 
 		if (r < 0) {
@@ -513,7 +513,6 @@ static int verity_verify_io(struct dm_verity_io *io)
 	struct bvec_iter start;
 	unsigned b;
 	struct verity_result res;
-	struct bio *bio = dm_bio_from_per_bio_data(io, v->ti->per_io_data_size);
 
 	for (b = 0; b < io->n_blocks; b++) {
 		int r;
