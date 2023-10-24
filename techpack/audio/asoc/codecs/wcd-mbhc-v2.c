@@ -329,12 +329,7 @@ out_micb_en:
 		if (micbias2)
 			/* Disable cs, pullup & enable micbias */
 			wcd_enable_curr_micbias(mbhc, WCD_MBHC_EN_MB);
-			/* Disable micbias, pullup & enable cs */
-#ifdef CONFIG_MACH_XIAOMI_MARKW
-			wcd_enable_curr_micbias(mbhc, WCD_MBHC_EN_MB);
-#else
-			wcd_enable_curr_micbias(mbhc, WCD_MBHC_EN_CS);
-#endif
+
 		mutex_unlock(&mbhc->hphl_pa_lock);
 		clear_bit(WCD_MBHC_ANC0_OFF_ACK, &mbhc->hph_anc_state);
 		break;
@@ -350,12 +345,7 @@ out_micb_en:
 		if (micbias2)
 			/* Disable cs, pullup & enable micbias */
 			wcd_enable_curr_micbias(mbhc, WCD_MBHC_EN_MB);
-			/* Disable micbias, pullup & enable cs */
-#ifdef CONFIG_MACH_XIAOMI_MARKW
-			wcd_enable_curr_micbias(mbhc, WCD_MBHC_EN_MB);
-#else
-			wcd_enable_curr_micbias(mbhc, WCD_MBHC_EN_CS);
-#endif
+
 		mutex_unlock(&mbhc->hphr_pa_lock);
 		clear_bit(WCD_MBHC_ANC1_OFF_ACK, &mbhc->hph_anc_state);
 		break;
