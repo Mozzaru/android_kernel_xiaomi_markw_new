@@ -47,7 +47,7 @@ MODULE_PARM_DESC(record_size,
 #ifdef CONFIG_MACH_XIAOMI_MARKW
 static ulong ramoops_console_size = 256*1024UL;
 #else
-static ulong ramoops_console_size = MIN_MEM_SIZE;
+static ulong ramoops_console_size;
 #endif
 module_param_named(console_size, ramoops_console_size, ulong, 0400);
 MODULE_PARM_DESC(console_size, "size of kernel console log");
@@ -59,7 +59,7 @@ MODULE_PARM_DESC(ftrace_size, "size of ftrace log");
 #if defined(CONFIG_MACH_XIAOMI_C6) || defined(CONFIG_MACH_XIAOMI_D2)
 static ulong ramoops_pmsg_size = 32*1024UL;
 #else
-static ulong ramoops_pmsg_size = MIN_MEM_SIZE;
+static ulong ramoops_pmsg_size;
 #endif
 module_param_named(pmsg_size, ramoops_pmsg_size, ulong, 0400);
 MODULE_PARM_DESC(pmsg_size, "size of user space message log");
