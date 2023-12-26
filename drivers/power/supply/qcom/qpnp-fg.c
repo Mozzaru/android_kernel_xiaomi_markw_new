@@ -2704,7 +2704,6 @@ static void check_sanity_work(struct work_struct *work)
 			msecs_to_jiffies(SANITY_CHECK_PERIOD_MS));
 		return;
 	}
->>>>>>> c785d5e40fc3 ([SQUASH] Nuke PEWQ)
 
 	fg_stay_awake(&chip->sanity_wakeup_source);
 
@@ -5080,7 +5079,6 @@ static void cc_soc_store_work(struct work_struct *work)
 	}
 
 	fg_relax(&chip->cc_soc_wakeup_source);
->>>>>>> c785d5e40fc3 ([SQUASH] Nuke PEWQ)
 }
 
 #define HARD_JEITA_ALARM_CHECK_NS	10000000000
@@ -5510,7 +5508,6 @@ static void fg_external_power_changed(struct power_supply *psy)
 		schedule_work(&chip->rslow_comp_work);
 	if (!is_input_present(chip) && chip->resume_soc_lowered) {
 		fg_stay_awake(&chip->resume_soc_wakeup_source);
->>>>>>> c785d5e40fc3 ([SQUASH] Nuke PEWQ)
 		schedule_work(&chip->set_resume_soc_work);
 	}
 	if (!is_input_present(chip) && chip->charge_full)
@@ -6025,7 +6022,6 @@ static void esr_extract_config_work(struct work_struct *work)
 	}
 
 	fg_relax(&chip->esr_extract_wakeup_source);
->>>>>>> c785d5e40fc3 ([SQUASH] Nuke PEWQ)
 }
 
 #define KI_COEFF_MEDC_REG		0x400
@@ -8095,7 +8091,6 @@ static int fg_common_hw_init(struct fg_chip *chip)
 #else
 			soc_to_setpoint(settings[FG_MEM_DELTA_SOC].value),
 #endif
->>>>>>> c785d5e40fc3 ([SQUASH] Nuke PEWQ)
 			settings[FG_MEM_DELTA_SOC].offset);
 	if (rc) {
 		pr_err("failed to write delta soc rc=%d\n", rc);
